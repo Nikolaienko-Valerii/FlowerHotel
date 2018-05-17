@@ -20,7 +20,7 @@ namespace FlowerHotel.DAL.Repositories
 
         public IEnumerable<Schedule> GetAll()
         {
-            return db.Schedules;
+            return db.Schedules.Include(s => s.Plant).Include(s => s.Resource);
         }
 
         public Schedule Get(int id)

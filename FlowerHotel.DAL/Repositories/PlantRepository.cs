@@ -20,7 +20,7 @@ namespace FlowerHotel.DAL.Repositories
 
         public IEnumerable<Plant> GetAll()
         {
-            return db.Plants;
+            return db.Plants.Include(p => p.User);
         }
 
         public Plant Get(int id)
