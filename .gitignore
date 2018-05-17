@@ -1,0 +1,14 @@
+
+FlowerHotel.DAL/obj/project.assets.json
+FlowerHotel.DAL/obj/FlowerHotel.DAL.csproj.nuget.g.props
+FlowerHotel.DAL/obj/FlowerHotel.DAL.csproj.nuget.g.props
+FlowerHotel.DAL/obj/FlowerHotel.DAL.csproj.nuget.cache
+FlowerHotel.DAL/obj/Debug/netstandard2.0/FlowerHotel.DAL.csproj.CoreCompileInputs.cache
+FlowerHotel.BLL/obj/project.assets.json
+FlowerHotel.BLL/obj/FlowerHotel.BLL.csproj.nuget.g.props
+FlowerHotel.BLL/obj/FlowerHotel.BLL.csproj.nuget.cache
+FlowerHotel.BLL/obj/Debug/netstandard2.0/FlowerHotel.BLL.csproj.CoreCompileInputs.cache
+FlowerHotel.API/obj/Debug/FlowerHotel.API.csproj.CoreCompileInputs.cache
+FlowerHotel.API/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+.vs/FlowerHotel/v15/sqlite3/storage.ide
+.vs/config/applicationhost.config
