@@ -1,0 +1,9 @@
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\netstandard2.0\FlowerHotel.DAL.deps.json
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\netstandard2.0\FlowerHotel.DAL.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\netstandard2.0\FlowerHotel.DAL.pdb
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.csprojResolveAssemblyReference.cache
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.csproj.CoreCompileInputs.cache
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.AssemblyInfoInputs.cache
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.AssemblyInfo.cs
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\netstandard2.0\FlowerHotel.DAL.pdb
