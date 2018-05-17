@@ -186,11 +186,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\valer\\source\\repos\\FlowerHotel\\FlowerHotel.BLL\\FlowerHotel.BLL.csproj",
+      "projectUniqueName": "D:\\Valera\\FlowerHotel\\FlowerHotel.BLL\\FlowerHotel.BLL.csproj",
       "projectName": "FlowerHotel.BLL",
-      "projectPath": "C:\\Users\\valer\\source\\repos\\FlowerHotel\\FlowerHotel.BLL\\FlowerHotel.BLL.csproj",
+      "projectPath": "D:\\Valera\\FlowerHotel\\FlowerHotel.BLL\\FlowerHotel.BLL.csproj",
       "packagesPath": "C:\\Users\\valer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\valer\\source\\repos\\FlowerHotel\\FlowerHotel.BLL\\obj\\",
+      "outputPath": "D:\\Valera\\FlowerHotel\\FlowerHotel.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

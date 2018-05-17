@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FlowerHotel.DAL.Entities
 {
-    class Schedule
+    public class Schedule
     {
         public int Id { get; set; }
         public int PlantId { get; set; }

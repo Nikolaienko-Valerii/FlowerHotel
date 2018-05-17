@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "d5ef1509ab9594c5ee7350d5e7860d93d6b54c43"
+    "signature": "9a9c246759b9d36aa2b280dbe1d6bfae3e0b3b90"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,10 +9,17 @@
     ".NETStandard,Version=v2.0/": {
       "FlowerHotel.DAL/1.0.0": {
         "dependencies": {
+          "EntityFramework": "6.2.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
           "FlowerHotel.DAL.dll": {}
+        }
+      },
+      "EntityFramework/6.2.0": {
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -28,6 +35,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "EntityFramework/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ptGyXOf26qLrtn+2doAmylIlCxOnBJANwlyyLrXDmqIk9O18IzLWHyxDwwAyhgXkxmbiaA0WNpRy67WRReInBw==",
+      "path": "entityframework/6.2.0",
+      "hashPath": "entityframework.6.2.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
