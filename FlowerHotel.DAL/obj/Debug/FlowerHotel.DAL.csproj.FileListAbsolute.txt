@@ -1,0 +1,17 @@
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\FlowerHotel.DAL.dll.config
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\FlowerHotel.DAL.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\FlowerHotel.DAL.pdb
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\EntityFramework.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\EntityFramework.xml
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.csproj.CoreCompileInputs.cache
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.dll
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.pdb
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.Initial.resources
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.csproj.GenerateResource.Cache
+C:\Users\valer\source\repos\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.SomeFixes.resources

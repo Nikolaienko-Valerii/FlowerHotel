@@ -6,3 +6,6 @@ D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.c
 D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.csproj.CoreCompileInputs.cache
 D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.AssemblyInfoInputs.cache
 D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.AssemblyInfo.cs
+D:\Valera\FlowerHotel\FlowerHotel.BLL\bin\Debug\netstandard2.0\FlowerHotel.BLL.pdb
+D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.dll
+D:\Valera\FlowerHotel\FlowerHotel.BLL\obj\Debug\netstandard2.0\FlowerHotel.BLL.pdb
