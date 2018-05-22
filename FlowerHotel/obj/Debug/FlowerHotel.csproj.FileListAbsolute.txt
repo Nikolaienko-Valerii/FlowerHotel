@@ -132,3 +132,5 @@ D:\Valera\FlowerHotel\FlowerHotel\obj\Debug\FlowerHotel.pdb
 D:\Valera\FlowerHotel\FlowerHotel\bin\Microsoft.Owin.Cors.dll
 D:\Valera\FlowerHotel\FlowerHotel\bin\System.Web.Cors.dll
 D:\Valera\FlowerHotel\FlowerHotel\bin\Microsoft.Owin.Cors.xml
+D:\Valera\FlowerHotel\FlowerHotel\bin\AutoMapper.dll
+D:\Valera\FlowerHotel\FlowerHotel\bin\AutoMapper.xml

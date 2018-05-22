@@ -9,5 +9,10 @@ namespace FlowerHotel.BLL.Services
         {
             return new UserService(new IdentityUnitOfWork(connection));
         }
+
+        public IHotelService CreateHotelService(string connection)
+        {
+            return new HotelService(new IdentityUnitOfWork(connection));
+        }
     }
 }
