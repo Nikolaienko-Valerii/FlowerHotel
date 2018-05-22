@@ -36,8 +36,8 @@ namespace FlowerHotel.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model)
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> Login(LoginModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -55,10 +55,25 @@ namespace FlowerHotel.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                    return RedirectToAction("Index", "Home");
+                    var result = new JsonResult();
+                    string roles = "";
+                    if (User.IsInRole("user"))
+                    {
+                        roles += "user";
+                    }
+                    if (User.IsInRole("employee"))
+                    {
+                        roles += "employee";
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        roles += "admin";
+                    }
+                    result.Data = roles;
+                    return result;
                 }
             }
-            return View(model);
+            return new JsonResult();
         }
 
         public ActionResult Logout()
@@ -73,8 +88,8 @@ namespace FlowerHotel.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterModel model)
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> Register(RegisterModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -85,15 +100,22 @@ namespace FlowerHotel.Controllers
                     Password = model.Password,
                     Surname = model.Surname,
                     Name = model.Name,
+                    TelephoneNumber = model.PhoneNumber,
                     Role = "user"
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
-                    return View("SuccessRegister");
+                    {
+                        var res = new JsonResult();
+                        res.Data = "";
+                        return res;
+                    }
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
-            return View(model);
+            var result = new JsonResult();
+            result.Data = "error";
+            return result;
         }
         private async Task SetInitialDataAsync()
         {

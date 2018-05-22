@@ -21,5 +21,7 @@ namespace FlowerHotel.Models
         public string Surname { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
     }
 }

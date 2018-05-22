@@ -15,10 +15,12 @@ namespace FlowerHotel.App_Start
         IServiceCreator serviceCreator = new ServiceCreator();
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
             app.CreatePerOwinContext<IUserService>(CreateUserService);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                AuthenticationType = DefaultAuthenticationTypes.ExternalBearer,
                 LoginPath = new PathString("/Account/Login"),
             });
         }

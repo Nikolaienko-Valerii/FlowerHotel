@@ -54,7 +54,7 @@ namespace FlowerHotel.BLL.Services
             // авторизуем его и возвращаем объект ClaimsIdentity
             if (user != null)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
-                                            DefaultAuthenticationTypes.ApplicationCookie);
+                                            DefaultAuthenticationTypes.ExternalBearer);
             return claim;
         }
 
