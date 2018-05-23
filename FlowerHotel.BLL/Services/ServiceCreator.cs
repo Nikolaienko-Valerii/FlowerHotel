@@ -14,5 +14,21 @@ namespace FlowerHotel.BLL.Services
         {
             return new HotelService(new IdentityUnitOfWork(connection));
         }
+        public IPlantService CreatePlantService(string connection)
+        {
+            return new PlantService(new IdentityUnitOfWork(connection));
+        }
+        public IOrderService CreateOrderService(string connection)
+        {
+            return new OrderService(new IdentityUnitOfWork(connection));
+        }
+        public IResourceService CreateResourceService(string connection)
+        {
+            return new ResourceService(new IdentityUnitOfWork(connection));
+        }
+        public IScheduleService CreateScheduleService(string connection)
+        {
+            return new ScheduleService(new IdentityUnitOfWork(connection));
+        }
     }
 }

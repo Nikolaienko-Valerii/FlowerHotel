@@ -10,5 +10,9 @@ namespace FlowerHotel.BLL.Interfaces
     {
         IUserService CreateUserService(string connection);
         IHotelService CreateHotelService(string connection);
+        IOrderService CreateOrderService(string connection);
+        IPlantService CreatePlantService(string connection);
+        IResourceService CreateResourceService(string connection);
+        IScheduleService CreateScheduleService(string connection);
     }
 }
