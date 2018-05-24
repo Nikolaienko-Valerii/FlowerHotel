@@ -34,3 +34,4 @@ D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.csproj.GenerateRe
 D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.csproj.CoreCompileInputs.cache
 D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.dll
 D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.pdb
+D:\Valera\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.userId_fix.resources

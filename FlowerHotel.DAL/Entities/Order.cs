@@ -7,7 +7,7 @@ namespace FlowerHotel.DAL.Entities
     public class Order
     {
         public int Id { get; set; }
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         public int PlantId { get; set; }
         public Plant Plant { get; set; }

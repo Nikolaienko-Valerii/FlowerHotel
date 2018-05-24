@@ -23,6 +23,11 @@ namespace FlowerHotel.DAL.Repositories
             return db.Plants.Include(p => p.ApplicationUser);
         }
 
+        public IEnumerable<Plant> GetUserPlants(string userId)
+        {
+            return db.Plants.Where(p => p.ApplicationUserId == userId);
+        }
+
         public Plant Get(int id)
         {
             return db.Plants.Find(id);

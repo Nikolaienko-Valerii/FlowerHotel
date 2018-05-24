@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201805181709554_SomeFixes.Designer.cs">
       <DependentUpon>201805181709554_SomeFixes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805241427553_userId_fix.cs" />
+    <Compile Include="Migrations\201805241427553_userId_fix.Designer.cs">
+      <DependentUpon>201805241427553_userId_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientManager.cs" />
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805181709554_SomeFixes.resx">
       <DependentUpon>201805181709554_SomeFixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241427553_userId_fix.resx">
+      <DependentUpon>201805241427553_userId_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
