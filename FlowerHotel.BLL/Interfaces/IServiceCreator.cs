@@ -14,5 +14,6 @@ namespace FlowerHotel.BLL.Interfaces
         IPlantService CreatePlantService(string connection);
         IResourceService CreateResourceService(string connection);
         IScheduleService CreateScheduleService(string connection);
+        IEmployeeService CreateEmployeeService(string connection);
     }
 }

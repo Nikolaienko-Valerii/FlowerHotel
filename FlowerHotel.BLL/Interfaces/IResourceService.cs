@@ -14,5 +14,6 @@ namespace FlowerHotel.BLL.Interfaces
         Task Delete(int resourceId);
         IEnumerable<ResourceDTO> GetAll();
         ResourceDTO Get(int resourceId);
+        IEnumerable<ResourceDTO> GetHotelResources(int HotelId);
     }
 }

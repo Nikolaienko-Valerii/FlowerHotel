@@ -63,8 +63,12 @@ namespace FlowerHotel.BLL.Services
             result.HotelId = resource.HotelId;
             return result;
         }
+        public IEnumerable<ResourceDTO> GetHotelResources(int hotelId)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Resource, ResourceDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Resource>, List<ResourceDTO>>(Database.Resources.Find(r => r.HotelId == hotelId));
+        }
 
-        //TODO Add Get and GetAll methods for one hotel
         public void Dispose()
         {
             Database.Dispose();
