@@ -73,6 +73,12 @@ namespace FlowerHotel.BLL.Services
             await Create(adminDto);
         }
 
+        public async Task<string> GetUserId(string email)
+        {
+            var user = await Database.UserManager.FindByEmailAsync(email);
+            return user.Id;
+        }
+
         public void Dispose()
         {
             Database.Dispose();

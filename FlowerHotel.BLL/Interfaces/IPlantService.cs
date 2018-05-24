@@ -13,6 +13,7 @@ namespace FlowerHotel.BLL.Interfaces
         Task Update(PlantDTO plantDto);
         Task Delete(int plantId);
         IEnumerable<PlantDTO> GetAll();
+        IEnumerable<PlantDTO> GetUserPlants(string UserId);
         PlantDTO Get(int plantId);
     }
 }

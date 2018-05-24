@@ -10,6 +10,7 @@ using FlowerHotel.BLL.Infrastructure;
 using FlowerHotel.BLL.DTO.Entities;
 using FlowerHotel.BLL.Services;
 using FlowerHotel.Models;
+using System.Threading.Tasks;
 
 namespace FlowerHotel.Controllers
 {
@@ -23,10 +24,19 @@ namespace FlowerHotel.Controllers
                 return new ServiceCreator().CreatePlantService("DefaultConnection");
             }
         }
-        // GET: api/Plant
-        public IHttpActionResult Get()
+        private IUserService UserService
         {
-            return Ok(PlantService.GetAll());
+            get
+            {
+                return new ServiceCreator().CreateUserService("DefaultConnection");
+            }
+        }
+
+        // GET: api/Plant
+        public async Task<IHttpActionResult> Get()
+        {
+            string userId = await UserService.GetUserId(User.Identity.Name);
+            return Ok(PlantService.GetUserPlants(userId));
         }
 
         // GET: api/Plant/5
@@ -36,16 +46,17 @@ namespace FlowerHotel.Controllers
         }
 
         // POST: api/Plant
-        public IHttpActionResult Post(PlantModel plant)
+        public async Task<IHttpActionResult> Post(PlantModel plant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            string userId = await UserService.GetUserId(User.Identity.Name);
             PlantDTO plantDTO = new PlantDTO();
             plantDTO.Name = plant.Name;
-            //plantDTO.ApplicationUserId = User.Id
-            PlantService.Create(plantDTO);
+            plantDTO.ApplicationUserId = userId;
+            await PlantService.Create(plantDTO);
             return Ok();
         }
 

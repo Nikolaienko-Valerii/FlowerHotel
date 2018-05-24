@@ -58,13 +58,12 @@ namespace FlowerHotel.BLL.Services
             return result;
         }
 
-        //public IEnumerable<PlantDTO> GetUserPlants(string userId)
-        //{
-        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Plant, PlantDTO>()).CreateMapper();
-        //    return mapper.Map<IEnumerable<Plant>, List<PlantDTO>>(Database.Plants.GetUserPlants(userId));
-        //}
+        public IEnumerable<PlantDTO> GetUserPlants(string userId)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Plant, PlantDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Plant>, List<PlantDTO>>(Database.Plants.Find(p => p.ApplicationUserId == userId));
+        }
 
-        //TODO Add Get and GetAll methods for one user
         public void Dispose()
         {
             Database.Dispose();

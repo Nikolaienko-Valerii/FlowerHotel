@@ -13,5 +13,6 @@ namespace FlowerHotel.BLL.Interfaces
         Task<OperationDetails> Create(UserDTO userDto);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
+        Task<string> GetUserId(string email);
     }
 }
