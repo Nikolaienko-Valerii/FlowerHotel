@@ -8,7 +8,7 @@ using FlowerHotel.Models;
 using System.Security.Claims;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.BLL.Infrastructure;
-using FlowerHotel.BLL.DTO.Entities;
+using FlowerHotel.BLL.DTO;
 
 namespace FlowerHotel.Controllers
 {
@@ -76,10 +76,10 @@ namespace FlowerHotel.Controllers
             return new JsonResult();
         }
 
-        public ActionResult Logout()
+        public JsonResult Logout()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return new JsonResult();
         }
 
         public ActionResult Register()
@@ -106,15 +106,19 @@ namespace FlowerHotel.Controllers
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
                     {
-                        var res = new JsonResult();
-                        res.Data = "";
-                        return res;
+                    var res = new JsonResult
+                    {
+                        Data = ""
+                    };
+                    return res;
                     }
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
-            var result = new JsonResult();
-            result.Data = "error";
+            var result = new JsonResult
+            {
+                Data = "error"
+            };
             return result;
         }
         private async Task SetInitialDataAsync()

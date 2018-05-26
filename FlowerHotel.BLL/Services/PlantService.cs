@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class PlantService : IPlantService
     {
-        IUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get; }
 
         public PlantService(IUnitOfWork uow)
         {
@@ -23,18 +18,22 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(PlantDTO plantDto)
         {
-            Plant plant = new Plant();
-            plant.Name = plantDto.Name;
-            plant.ApplicationUserId = plantDto.ApplicationUserId;
+            var plant = new Plant
+            {
+                Name = plantDto.Name,
+                ApplicationUserId = plantDto.ApplicationUserId
+            };
             Database.Plants.Create(plant);
             await Database.SaveAsync();
         }
         public async Task Update(PlantDTO plantDto)
         {
-            Plant plant = new Plant();
-            plant.Id = plantDto.Id;
-            plant.Name = plantDto.Name;
-            plant.ApplicationUserId = plantDto.ApplicationUserId;
+            var plant = new Plant
+            {
+                Id = plantDto.Id,
+                Name = plantDto.Name,
+                ApplicationUserId = plantDto.ApplicationUserId
+            };
             Database.Plants.Update(plant);
             await Database.SaveAsync();
         }
@@ -51,10 +50,12 @@ namespace FlowerHotel.BLL.Services
         public PlantDTO Get(int plantId)
         {
             var plant = Database.Plants.Get(plantId);
-            var result = new PlantDTO();
-            result.Id = plant.Id;
-            result.Name = plant.Name;
-            result.ApplicationUserId = plant.ApplicationUserId;
+            var result = new PlantDTO
+            {
+                Id = plant.Id,
+                Name = plant.Name,
+                ApplicationUserId = plant.ApplicationUserId
+            };
             return result;
         }
 

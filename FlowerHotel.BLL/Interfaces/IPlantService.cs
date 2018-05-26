@@ -1,8 +1,6 @@
-﻿using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+﻿using FlowerHotel.BLL.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Interfaces
@@ -13,7 +11,7 @@ namespace FlowerHotel.BLL.Interfaces
         Task Update(PlantDTO plantDto);
         Task Delete(int plantId);
         IEnumerable<PlantDTO> GetAll();
-        IEnumerable<PlantDTO> GetUserPlants(string UserId);
+        IEnumerable<PlantDTO> GetUserPlants(string userId);
         PlantDTO Get(int plantId);
     }
 }

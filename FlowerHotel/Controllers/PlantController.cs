@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Security.Claims;
+﻿using System.Web.Http;
 using FlowerHotel.BLL.Interfaces;
-using FlowerHotel.BLL.Infrastructure;
-using FlowerHotel.BLL.DTO.Entities;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Services;
 using FlowerHotel.Models;
 using System.Threading.Tasks;
@@ -52,25 +45,31 @@ namespace FlowerHotel.Controllers
             {
                 return BadRequest();
             }
-            string userId = await UserService.GetUserId(User.Identity.Name);
-            PlantDTO plantDTO = new PlantDTO();
-            plantDTO.Name = plant.Name;
-            plantDTO.ApplicationUserId = userId;
+            var userId = await UserService.GetUserId(User.Identity.Name);
+            var plantDTO = new PlantDTO
+            {
+                Name = plant.Name,
+                ApplicationUserId = userId
+            };
             await PlantService.Create(plantDTO);
             return Ok();
         }
 
         // PUT: api/Hotel/5
-        public IHttpActionResult Put(PlantModel plant)
+        public async Task<IHttpActionResult> Put(PlantModel plant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            PlantDTO plantDTO = new PlantDTO();
-            plantDTO.Id = plant.Id;
-            plantDTO.Name = plant.Name;
-            PlantService.Update(plantDTO);
+            var userId = await UserService.GetUserId(User.Identity.Name);
+            var plantDTO = new PlantDTO
+            {
+                Id = plant.Id,
+                ApplicationUserId = userId,
+                Name = plant.Name
+            };
+            await PlantService.Update(plantDTO);
             return Ok();
         }
 

@@ -209,12 +209,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Controllers\PlantController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Models\ResourceModel.cs" />
     <Compile Include="Models\PlantModel.cs" />
     <Compile Include="Models\HotelModel.cs" />

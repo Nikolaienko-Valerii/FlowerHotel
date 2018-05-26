@@ -4,33 +4,31 @@ using FlowerHotel.DAL.Identity;
 using FlowerHotel.DAL.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.DAL.Repositories
 {
     public class IdentityUnitOfWork : IUnitOfWork
     {
-        private ApplicationContext db;
+        private ApplicationContext _db;
 
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
         private IClientManager clientManager;
 
-        private HotelRepository hotelRepository;
-        private OrderRepository orderRepository;
-        private PlantRepository plantRepository;
-        private EmployeeRepository employeeRepository;
-        private ScheduleRepository scheduleRepository;
-        private ResourceRepository resourceRepository;
+        private HotelRepository _hotelRepository;
+        private OrderRepository _orderRepository;
+        private PlantRepository _plantRepository;
+        private EmployeeRepository _employeeRepository;
+        private ScheduleRepository _scheduleRepository;
+        private ResourceRepository _resourceRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
-            db = new ApplicationContext(/*connectionString*/);
-            userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
-            roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(db));
-            clientManager = new ClientManager(db);
+            _db = new ApplicationContext(/*connectionString*/);
+            userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_db));
+            roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_db));
+            clientManager = new ClientManager(_db);
         }
 
         public ApplicationUserManager UserManager
@@ -52,9 +50,9 @@ namespace FlowerHotel.DAL.Repositories
         {
             get
             {
-                if (hotelRepository == null)
-                    hotelRepository = new HotelRepository(db);
-                return hotelRepository;
+                if (_hotelRepository == null)
+                    _hotelRepository = new HotelRepository(_db);
+                return _hotelRepository;
             }
         }
 
@@ -62,77 +60,65 @@ namespace FlowerHotel.DAL.Repositories
         {
             get
             {
-                if (orderRepository == null)
-                    orderRepository = new OrderRepository(db);
-                return orderRepository;
+                if (_orderRepository == null)
+                    _orderRepository = new OrderRepository(_db);
+                return _orderRepository;
             }
         }
-        //public IRepository<ApplicationUser> Users
-        //{
-        //    get
-        //    {
-        //        if (userRepository == null)
-        //            userRepository = new UserRepository(db);
-        //        return userRepository;
-        //    }
-        //}
+        
         public IRepository<Plant> Plants
         {
             get
             {
-                if (plantRepository == null)
-                    plantRepository = new PlantRepository(db);
-                return plantRepository;
+                if (_plantRepository == null)
+                    _plantRepository = new PlantRepository(_db);
+                return _plantRepository;
             }
         }
         public IRepository<Employee> Employees
         {
             get
             {
-                if (employeeRepository == null)
-                    employeeRepository = new EmployeeRepository(db);
-                return employeeRepository;
+                if (_employeeRepository == null)
+                    _employeeRepository = new EmployeeRepository(_db);
+                return _employeeRepository;
             }
         }
         public IRepository<Schedule> Schedules
         {
             get
             {
-                if (scheduleRepository == null)
-                    scheduleRepository = new ScheduleRepository(db);
-                return scheduleRepository;
+                if (_scheduleRepository == null)
+                    _scheduleRepository = new ScheduleRepository(_db);
+                return _scheduleRepository;
             }
         }
         public IRepository<Resource> Resources
         {
             get
             {
-                if (resourceRepository == null)
-                    resourceRepository = new ResourceRepository(db);
-                return resourceRepository;
+                if (_resourceRepository == null)
+                    _resourceRepository = new ResourceRepository(_db);
+                return _resourceRepository;
             }
         }
-        //public void Save()
-        //{
-        //    db.SaveChanges();
-        //}
 
         public async Task SaveAsync()
         {
-            await db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
-        private bool disposed = false;
+        private bool _disposed;
 
         public virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
-                    db.Dispose();
+                    _db.Dispose();
                 }
-                this.disposed = true;
+                _disposed = true;
             }
         }
 

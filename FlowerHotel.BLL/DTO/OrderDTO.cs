@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace FlowerHotel.BLL.DTO.Entities
+namespace FlowerHotel.BLL.DTO
 {
     public class OrderDTO
     {

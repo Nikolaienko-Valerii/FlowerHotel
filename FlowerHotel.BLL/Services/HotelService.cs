@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class HotelService : IHotelService
     {
-        IUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get; }
 
         public HotelService(IUnitOfWork uow)
         {
@@ -23,20 +18,24 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(HotelDTO hotelDto)
         {
-            Hotel hotel = new Hotel();
-            hotel.Name = hotelDto.Name;
-            hotel.Location = hotelDto.Location;
-            hotel.AmountOfPlaces = hotelDto.AmountOfPlaces;
-            hotel.PlacesAvailable = hotelDto.AmountOfPlaces;
+            var hotel = new Hotel
+            {
+                Name = hotelDto.Name,
+                Location = hotelDto.Location,
+                AmountOfPlaces = hotelDto.AmountOfPlaces,
+                PlacesAvailable = hotelDto.AmountOfPlaces
+            };
             Database.Hotels.Create(hotel);
             await Database.SaveAsync();
         }
         public async Task Update(HotelDTO hotelDto)
         {
-            Hotel hotel = new Hotel();
-            hotel.Id = hotelDto.Id;
-            hotel.Name = hotelDto.Name;
-            hotel.Location = hotelDto.Location;
+            var hotel = new Hotel
+            {
+                Id = hotelDto.Id,
+                Name = hotelDto.Name,
+                Location = hotelDto.Location
+            };
             int available = hotelDto.AmountOfPlaces - (hotel.AmountOfPlaces - hotel.PlacesAvailable);
             hotel.AmountOfPlaces = hotelDto.AmountOfPlaces;
             hotel.PlacesAvailable = available;
@@ -56,12 +55,14 @@ namespace FlowerHotel.BLL.Services
         public HotelDTO Get(int hotelId)
         {
             var hotel = Database.Hotels.Get(hotelId);
-            var result = new HotelDTO();
-            result.Id = hotel.Id;
-            result.Name = hotel.Name;
-            result.Location = hotel.Location;
-            result.PlacesAvailable = hotel.PlacesAvailable;
-            result.AmountOfPlaces = hotel.AmountOfPlaces;
+            var result = new HotelDTO
+            {
+                Id = hotel.Id,
+                Name = hotel.Name,
+                Location = hotel.Location,
+                PlacesAvailable = hotel.PlacesAvailable,
+                AmountOfPlaces = hotel.AmountOfPlaces
+            };
             return result;
         }
         public void Dispose()

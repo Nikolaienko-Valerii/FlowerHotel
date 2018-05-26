@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class OrderService : IOrderService
     {
-        IUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get; }
 
         public OrderService(IUnitOfWork uow)
         {
@@ -23,26 +18,30 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(OrderDTO orderDto)
         {
-            Order order = new Order();
-            order.HotelId = orderDto.HotelId;
-            order.ApplicationUserId = orderDto.ApplicationUserId;
-            order.PlantId = orderDto.PlantId;
-            order.StartTime = orderDto.StartTime;
-            order.EndTime = orderDto.EndTime;
-            order.IsActive = orderDto.IsActive;
+            var order = new Order
+            {
+                HotelId = orderDto.HotelId,
+                ApplicationUserId = orderDto.ApplicationUserId,
+                PlantId = orderDto.PlantId,
+                StartTime = orderDto.StartTime,
+                EndTime = orderDto.EndTime,
+                IsActive = orderDto.IsActive
+            };
             Database.Orders.Create(order);
             await Database.SaveAsync();
         }
         public async Task Update(OrderDTO orderDto)
         {
-            Order order = new Order();
-            order.Id = orderDto.Id;
-            order.HotelId = orderDto.HotelId;
-            order.ApplicationUserId = orderDto.ApplicationUserId;
-            order.PlantId = orderDto.PlantId;
-            order.StartTime = orderDto.StartTime;
-            order.EndTime = orderDto.EndTime;
-            order.IsActive = orderDto.IsActive;
+            var order = new Order
+            {
+                Id = orderDto.Id,
+                HotelId = orderDto.HotelId,
+                ApplicationUserId = orderDto.ApplicationUserId,
+                PlantId = orderDto.PlantId,
+                StartTime = orderDto.StartTime,
+                EndTime = orderDto.EndTime,
+                IsActive = orderDto.IsActive
+            };
             Database.Orders.Update(order);
             await Database.SaveAsync();
         }
@@ -59,14 +58,16 @@ namespace FlowerHotel.BLL.Services
         public OrderDTO Get(int orderId)
         {
             var order = Database.Orders.Get(orderId);
-            var result = new OrderDTO();
-            result.Id = order.Id;
-            result.HotelId = order.HotelId;
-            result.ApplicationUserId = order.ApplicationUserId;
-            result.PlantId = order.PlantId;
-            result.StartTime = order.StartTime;
-            result.EndTime = order.EndTime;
-            result.IsActive = order.IsActive;
+            var result = new OrderDTO
+            {
+                Id = order.Id,
+                HotelId = order.HotelId,
+                ApplicationUserId = order.ApplicationUserId,
+                PlantId = order.PlantId,
+                StartTime = order.StartTime,
+                EndTime = order.EndTime,
+                IsActive = order.IsActive
+            };
             return result;
         }
 

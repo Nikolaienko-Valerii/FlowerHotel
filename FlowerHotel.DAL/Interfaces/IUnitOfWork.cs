@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Identity;
 using System.Threading.Tasks;
@@ -13,7 +11,6 @@ namespace FlowerHotel.DAL.Interfaces
         IClientManager ClientManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IRepository<Hotel> Hotels { get; }
-        //IRepository<ApplicationUser> Users { get; }
         IRepository<Plant> Plants { get; }
         IRepository<Order> Orders { get; }
         IRepository<Employee> Employees { get; }

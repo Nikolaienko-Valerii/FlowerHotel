@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Security.Claims;
+﻿using System.Web.Http;
 using FlowerHotel.BLL.Interfaces;
-using FlowerHotel.BLL.Infrastructure;
-using FlowerHotel.BLL.DTO.Entities;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Services;
 using FlowerHotel.Models;
 
@@ -42,10 +35,12 @@ namespace FlowerHotel.Controllers
             {
                 return BadRequest();
             }
-            HotelDTO hotelDTO = new HotelDTO();
-            hotelDTO.Name = hotel.Name;
-            hotelDTO.Location = hotel.Location;
-            hotelDTO.AmountOfPlaces = hotel.AmmountOfPlaces;
+            var hotelDTO = new HotelDTO
+            {
+                Name = hotel.Name,
+                Location = hotel.Location,
+                AmountOfPlaces = hotel.AmmountOfPlaces
+            };
             HotelService.Create(hotelDTO);
             return Ok();
         }
@@ -57,11 +52,13 @@ namespace FlowerHotel.Controllers
             {
                 return BadRequest();
             }
-            HotelDTO hotelDTO = new HotelDTO();
-            hotelDTO.Id = hotel.Id;
-            hotelDTO.Name = hotel.Name;
-            hotelDTO.Location = hotel.Location;
-            hotelDTO.AmountOfPlaces = hotel.AmmountOfPlaces;
+            var hotelDTO = new HotelDTO
+            {
+                Id = hotel.Id,
+                Name = hotel.Name,
+                Location = hotel.Location,
+                AmountOfPlaces = hotel.AmmountOfPlaces
+            };
             HotelService.Update(hotelDTO);
             return Ok();
         }

@@ -1,21 +1,17 @@
 ﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; }
 
         public EmployeeService(IUnitOfWork uow)
         {
@@ -23,18 +19,22 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(EmployeeDTO employeeDto)
         {
-            Employee employee = new Employee();
-            employee.ApplicationUserId = employeeDto.ApplicationUserId;
-            employee.HotelId = employeeDto.HotelId;
+            var employee = new Employee
+            {
+                ApplicationUserId = employeeDto.ApplicationUserId,
+                HotelId = employeeDto.HotelId
+            };
             Database.Employees.Create(employee);
             await Database.SaveAsync();
         }
         public async Task Update(EmployeeDTO employeeDto)
         {
-            Employee employee = new Employee();
-            employee.Id = employeeDto.Id;
-            employee.HotelId = employeeDto.HotelId;
-            employee.ApplicationUserId = employeeDto.ApplicationUserId;
+            var employee = new Employee
+            {
+                Id = employeeDto.Id,
+                HotelId = employeeDto.HotelId,
+                ApplicationUserId = employeeDto.ApplicationUserId
+            };
             Database.Employees.Update(employee);
             await Database.SaveAsync();
         }
@@ -51,10 +51,12 @@ namespace FlowerHotel.BLL.Services
         public EmployeeDTO Get(int employeeId)
         {
             var employee = Database.Employees.Get(employeeId);
-            var result = new EmployeeDTO();
-            result.Id = employee.Id;
-            result.HotelId = employee.HotelId;
-            result.ApplicationUserId = employee.ApplicationUserId;
+            var result = new EmployeeDTO
+            {
+                Id = employee.Id,
+                HotelId = employee.HotelId,
+                ApplicationUserId = employee.ApplicationUserId
+            };
             return result;
         }
 

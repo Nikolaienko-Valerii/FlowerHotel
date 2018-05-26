@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class ResourceService : IResourceService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; }
 
         public ResourceService(IUnitOfWork uow)
         {
@@ -23,9 +18,11 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(ResourceDTO resourceDto)
         {
-            Resource resource = new Resource();
-            resource.Name = resourceDto.Name;
-            resource.Amount = resourceDto.Amount;
+            var resource = new Resource
+            {
+                Name = resourceDto.Name,
+                Amount = resourceDto.Amount
+            };
             resource.HotelId = resource.HotelId;
             resource.Measure = resourceDto.Measure;
             Database.Resources.Create(resource);
@@ -33,10 +30,12 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Update(ResourceDTO resourceDto)
         {
-            Resource resource = new Resource();
-            resource.Id = resourceDto.Id;
-            resource.Name = resourceDto.Name;
-            resource.Amount = resourceDto.Amount;
+            var resource = new Resource
+            {
+                Id = resourceDto.Id,
+                Name = resourceDto.Name,
+                Amount = resourceDto.Amount
+            };
             resource.HotelId = resource.HotelId;
             resource.Measure = resourceDto.Measure;
             Database.Resources.Update(resource);
@@ -55,12 +54,14 @@ namespace FlowerHotel.BLL.Services
         public ResourceDTO Get(int resourceId)
         {
             var resource = Database.Resources.Get(resourceId);
-            var result = new ResourceDTO();
-            result.Id = resource.Id;
-            result.Name = resource.Name;
-            result.Amount = resource.Amount;
-            result.Measure = resource.Measure;
-            result.HotelId = resource.HotelId;
+            var result = new ResourceDTO
+            {
+                Id = resource.Id,
+                Name = resource.Name,
+                Amount = resource.Amount,
+                Measure = resource.Measure,
+                HotelId = resource.HotelId
+            };
             return result;
         }
         public IEnumerable<ResourceDTO> GetHotelResources(int hotelId)

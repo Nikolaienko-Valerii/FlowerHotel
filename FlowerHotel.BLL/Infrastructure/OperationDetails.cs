@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FlowerHotel.BLL.Infrastructure
+﻿namespace FlowerHotel.BLL.Infrastructure
 {
     public class OperationDetails
     {

@@ -1,21 +1,17 @@
-﻿using AutoMapper;
-using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+﻿using System;
+using AutoMapper;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class ScheduleService : IScheduleService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; }
 
         public ScheduleService(IUnitOfWork uow)
         {
@@ -23,28 +19,32 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Create(ScheduleDTO scheduleDto)
         {
-            Schedule schedule = new Schedule();
-            schedule.PlantId = scheduleDto.PlantId;
-            schedule.ResourceId = scheduleDto.ResourceId;
-            schedule.IsTracked = scheduleDto.IsTracked;
-            schedule.Interval = scheduleDto.Interval;
-            schedule.LastTimeDone = scheduleDto.LastTimeDone;
-            schedule.Amount = scheduleDto.Amount;
-            schedule.Measure = scheduleDto.Measure;
+            var schedule = new Schedule
+            {
+                PlantId = scheduleDto.PlantId,
+                ResourceId = scheduleDto.ResourceId,
+                IsTracked = scheduleDto.IsTracked,
+                Interval = scheduleDto.Interval,
+                LastTimeDone = scheduleDto.LastTimeDone,
+                Amount = scheduleDto.Amount,
+                Measure = scheduleDto.Measure
+            };
             Database.Schedules.Create(schedule);
             await Database.SaveAsync();
         }
         public async Task Update(ScheduleDTO scheduleDto)
         {
-            Schedule schedule = new Schedule();
-            schedule.Id = scheduleDto.Id;
-            schedule.PlantId = scheduleDto.PlantId;
-            schedule.ResourceId = scheduleDto.ResourceId;
-            schedule.IsTracked = scheduleDto.IsTracked;
-            schedule.Interval = scheduleDto.Interval;
-            schedule.LastTimeDone = scheduleDto.LastTimeDone;
-            schedule.Amount = scheduleDto.Amount;
-            schedule.Measure = scheduleDto.Measure;
+            var schedule = new Schedule
+            {
+                Id = scheduleDto.Id,
+                PlantId = scheduleDto.PlantId,
+                ResourceId = scheduleDto.ResourceId,
+                IsTracked = scheduleDto.IsTracked,
+                Interval = scheduleDto.Interval,
+                LastTimeDone = scheduleDto.LastTimeDone,
+                Amount = scheduleDto.Amount,
+                Measure = scheduleDto.Measure
+            };
             Database.Schedules.Update(schedule);
             await Database.SaveAsync();
         }
@@ -61,19 +61,29 @@ namespace FlowerHotel.BLL.Services
         public ScheduleDTO Get(int scheduleId)
         {
             var schedule = Database.Schedules.Get(scheduleId);
-            var result = new ScheduleDTO();
-            result.Id = schedule.Id;
-            result.PlantId = schedule.PlantId;
-            result.ResourceId = schedule.ResourceId;
-            result.IsTracked = schedule.IsTracked;
-            result.Interval = schedule.Interval;
-            result.LastTimeDone = schedule.LastTimeDone;
-            result.Amount = schedule.Amount;
-            result.Measure = schedule.Measure;
+            var result = new ScheduleDTO
+            {
+                Id = schedule.Id,
+                PlantId = schedule.PlantId,
+                ResourceId = schedule.ResourceId,
+                IsTracked = schedule.IsTracked,
+                Interval = schedule.Interval,
+                LastTimeDone = schedule.LastTimeDone,
+                Amount = schedule.Amount,
+                Measure = schedule.Measure
+            };
             return result;
         }
-
-        //TODO Add Get and GetAll methods for one plant and get list of tracked  schedules for today
+        public IEnumerable<ScheduleDTO> GetPlantSchedules(int plantId)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Schedule, ScheduleDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Schedule>, List<ScheduleDTO>>(Database.Schedules.Find(s => s.PlantId == plantId));
+        }
+        public IEnumerable<ScheduleDTO> GetSchedulesForToday()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Schedule, ScheduleDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Schedule>, List<ScheduleDTO>>(Database.Schedules.Find(s => (s.LastTimeDone.AddDays(s.Interval).Date == DateTime.Today.Date)));
+        }
         public void Dispose()
         {
             Database.Dispose();

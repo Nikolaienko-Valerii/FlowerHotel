@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Security.Claims;
+﻿using System.Web.Http;
 using FlowerHotel.BLL.Interfaces;
-using FlowerHotel.BLL.Infrastructure;
-using FlowerHotel.BLL.DTO.Entities;
+using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Services;
 using FlowerHotel.Models;
 using System.Threading.Tasks;

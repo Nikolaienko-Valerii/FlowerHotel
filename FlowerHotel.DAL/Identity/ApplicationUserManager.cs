@@ -1,8 +1,5 @@
 ﻿using FlowerHotel.DAL.Entities;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FlowerHotel.DAL.Identity
 {

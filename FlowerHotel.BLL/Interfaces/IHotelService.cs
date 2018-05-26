@@ -1,8 +1,6 @@
-﻿using FlowerHotel.BLL.DTO.Entities;
-using FlowerHotel.BLL.Infrastructure;
+﻿using FlowerHotel.BLL.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Interfaces

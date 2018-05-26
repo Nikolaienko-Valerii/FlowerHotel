@@ -1,22 +1,19 @@
-﻿using FlowerHotel.BLL.DTO.Entities;
+﻿using FlowerHotel.BLL.DTO;
 using FlowerHotel.BLL.Infrastructure;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.DAL.Entities;
 using FlowerHotel.DAL.Interfaces;
-using FlowerHotel.DAL.Repositories;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlowerHotel.BLL.Services
 {
     public class UserService : IUserService
     {
-        IUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get; }
 
         public UserService(IUnitOfWork uow)
         {
@@ -30,12 +27,12 @@ namespace FlowerHotel.BLL.Services
             {
                 user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
-                if (result.Errors.Count() > 0)
+                if (result.Errors.Any())
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // добавляем роль
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                 // создаем профиль клиента
-                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Surname = userDto.Surname, Name = userDto.Name };
+                var clientProfile = new ClientProfile { Id = user.Id, Surname = userDto.Surname, Name = userDto.Name };
                 Database.ClientManager.Create(clientProfile);
                 await Database.SaveAsync();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
