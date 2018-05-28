@@ -21,7 +21,9 @@ namespace FlowerHotel.App_Start
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ExternalBearer,
-                LoginPath = new PathString("/Account/Login"),
+                //LoginPath = new PathString("/Account/Login"),
+                CookieHttpOnly = false,
+                CookieSecure = CookieSecureOption.Never,
             });
         }
 
