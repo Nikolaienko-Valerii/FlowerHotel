@@ -9,6 +9,7 @@ using System.Security.Claims;
 using FlowerHotel.BLL.Interfaces;
 using FlowerHotel.BLL.Infrastructure;
 using FlowerHotel.BLL.DTO;
+using FlowerHotel.BLL.Services;
 
 namespace FlowerHotel.Controllers
 {
@@ -27,6 +28,14 @@ namespace FlowerHotel.Controllers
             get
             {
                 return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        private IEmployeeService EmployeeService
+        {
+            get
+            {
+                return new ServiceCreator().CreateEmployeeService("DefaultConnection");
             }
         }
 
@@ -55,21 +64,24 @@ namespace FlowerHotel.Controllers
                     {
                         IsPersistent = true
                     }, claim);
+                    var user = new UserModel
+                    {
+                        UserName = model.Email
+                    };
                     var result = new JsonResult();
-                    string roles = "";
                     if (User.IsInRole("user"))
                     {
-                        roles += "user";
+                        user.Role = "user";
                     }
                     if (User.IsInRole("employee"))
                     {
-                        roles += "employee";
+                        user.Role = "employee";
                     }
                     if (User.IsInRole("admin"))
                     {
-                        roles += "admin";
+                        user.Role = "admin";
                     }
-                    result.Data = roles;
+                    result.Data = user;
                     return result;
                 }
             }
@@ -89,7 +101,7 @@ namespace FlowerHotel.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<JsonResult> Register(RegisterModel model)
+        public async Task<JsonResult> Register(RegisterModel model, int hotelId = 0)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -100,12 +112,21 @@ namespace FlowerHotel.Controllers
                     Password = model.Password,
                     Surname = model.Surname,
                     Name = model.Name,
-                    TelephoneNumber = model.PhoneNumber,
-                    Role = "user"
+                    TelephoneNumber = model.PhoneNumber
                 };
+                userDto.Role = hotelId != 0 ? "employee" : "user";
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
                     {
+                        if (hotelId != 0)
+                        {
+                            string userId = operationDetails.Message;
+                            await EmployeeService.Create(new EmployeeDTO
+                            {
+                                ApplicationUserId = userId,
+                                HotelId = hotelId
+                            });
+                        }
                     var res = new JsonResult
                     {
                         Data = ""

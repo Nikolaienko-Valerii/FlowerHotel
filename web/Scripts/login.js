@@ -17,17 +17,10 @@ $(function () {
             xhrFields: { withCredentials: true },
             data: loginData
         }).success(function (data, status, xhr) {
-            $('.userName').text(data.userName);
-            $('.userInfo').css('display', 'block');
-            $('.loginForm').css('display', 'none');
-            // сохраняем в хранилище sessionStorage токен доступа
-            sessionStorage.setItem(tokenKey, data.access_token);
-            sessionStorage.setItem("user", data.userName);
-            sessionStorage.setItem("userRole", data.userRole);
-            console.log(xhr);
+            sessionStorage.setItem("user", data.UserName);
+            sessionStorage.setItem("role", data.Role);
+            CheckAuthorization();
         }).fail(function (data) {
-            console.log('------------');
-            console.log(data);
             alert('При логине возникла ошибка');
         });
     });

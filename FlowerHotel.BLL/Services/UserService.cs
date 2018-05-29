@@ -32,10 +32,16 @@ namespace FlowerHotel.BLL.Services
                 // добавляем роль
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                 // создаем профиль клиента
-                var clientProfile = new ClientProfile { Id = user.Id, Surname = userDto.Surname, Name = userDto.Name };
+                var clientProfile = new ClientProfile
+                {
+                    Id = user.Id,
+                    Surname = userDto.Surname,
+                    Name = userDto.Name,
+                    TelephoneNumber = userDto.TelephoneNumber
+                };
                 Database.ClientManager.Create(clientProfile);
                 await Database.SaveAsync();
-                return new OperationDetails(true, "Регистрация успешно пройдена", "");
+                return new OperationDetails(true, user.Id, "Id");
             }
             else
             {
