@@ -67,11 +67,12 @@ namespace FlowerHotel.Controllers
                     var it = claims.GetEnumerator();
                     while (it.MoveNext())
                     {
-                        if (it.Current.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                        if (it.Current?.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
                         {
                             user.Role = it.Current.Value;
                         }
                     }
+                    it.Dispose();
                     var result = new JsonResult
                     {
                         Data = user

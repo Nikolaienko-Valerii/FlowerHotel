@@ -6,7 +6,7 @@ using FlowerHotel.Models;
 
 namespace FlowerHotel.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize]
     public class HotelController : ApiController
     {
         private IHotelService HotelService
@@ -27,7 +27,7 @@ namespace FlowerHotel.Controllers
         {
             return Ok(HotelService.Get(id));
         }
-
+        [Authorize(Roles = "admin")]
         // POST: api/Hotel
         public IHttpActionResult Post(HotelModel hotel)
         {
@@ -44,7 +44,7 @@ namespace FlowerHotel.Controllers
             HotelService.Create(hotelDTO);
             return Ok();
         }
-
+        [Authorize(Roles = "admin")]
         // PUT: api/Hotel/5
         public IHttpActionResult Put(HotelModel hotel)
         {
@@ -62,7 +62,7 @@ namespace FlowerHotel.Controllers
             HotelService.Update(hotelDTO);
             return Ok();
         }
-
+        [Authorize(Roles = "admin")]
         // DELETE: api/Hotel/5
         public IHttpActionResult Delete(int id)
         {

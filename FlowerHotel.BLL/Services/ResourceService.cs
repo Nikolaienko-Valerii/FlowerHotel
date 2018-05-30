@@ -20,11 +20,16 @@ namespace FlowerHotel.BLL.Services
         {
             var resource = new Resource
             {
-                Name = resourceDto.Name
+                Name = resourceDto.Name,
+                Measure = resourceDto.Measure
             };
-            resource.Measure = resourceDto.Measure;
             Database.Resources.Create(resource);
             await Database.SaveAsync();
+            var hotels = Database.Hotels.GetAll();
+            foreach (var hotel in hotels)
+            {
+                Database.HotelResources.Create(new HotelResource{HotelId = hotel.Id, ResourceId = resource.Id, Amount = 0});
+            }
         }
         public async Task Update(ResourceDTO resourceDto)
         {

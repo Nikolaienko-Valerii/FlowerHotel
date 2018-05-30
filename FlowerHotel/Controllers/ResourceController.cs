@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlowerHotel.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize]
     public class ResourceController : ApiController
     {
         private IResourceService ResourceService
@@ -29,7 +29,7 @@ namespace FlowerHotel.Controllers
         {
             return Ok(ResourceService.Get(id));
         }
-
+        [Authorize(Roles = "admin")]
         // POST: api/Resource
         public async Task<IHttpActionResult> Post(ResourceModel resource)
         {
@@ -45,7 +45,7 @@ namespace FlowerHotel.Controllers
             await ResourceService.Create(resourceDTO);
             return Ok();
         }
-
+        [Authorize(Roles = "admin")]
         // PUT: api/Hotel/5
         public async Task<IHttpActionResult> Put(ResourceModel resource)
         {
@@ -61,7 +61,7 @@ namespace FlowerHotel.Controllers
             await ResourceService.Update(resourceDTO);
             return Ok();
         }
-
+        [Authorize(Roles = "admin")]
         // DELETE: api/Resource/5
         public IHttpActionResult Delete(int id)
         {
