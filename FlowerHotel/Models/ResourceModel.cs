@@ -9,7 +9,6 @@ namespace FlowerHotel.Models
         public string Name { get; set; }
         [Required]
         public int HotelId { get; set; }
-        [Required]
         public double Amount { get; set; }
         [Required]
         public string Measure { get; set; }

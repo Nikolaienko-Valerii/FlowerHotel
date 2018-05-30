@@ -60,4 +60,7 @@ function EnableEditButtons () {
         sessionStorage.setItem('hotelId', hotelId);
         window.location.href = './edit-hotel.html';
     });
+    $(".add-button").click(function () {
+        window.location.href = './add-hotel.html';
+    });
 };

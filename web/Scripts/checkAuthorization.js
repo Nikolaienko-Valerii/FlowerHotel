@@ -8,6 +8,8 @@ function CheckAuthorization() {
         isOnLoginPage = true;
     }
     if (cookie != "") {
+        $('.username').empty();
+        $('.username').append(sessionStorage.getItem('user'));
         CheckRole();
     }
     else {
@@ -18,6 +20,13 @@ function CheckAuthorization() {
 }
 
 function CheckRole() {
+    var isOnLoginPage = false;
+    if (location.href.includes('login.html')) {
+        isOnLoginPage = true;
+    }
+    if (!isOnLoginPage){
+        url = '../';
+    }
     var role = sessionStorage.getItem('role');
     var currentLocation = location.href;
     switch (role) {
@@ -45,3 +54,26 @@ function IsUserHere(pathPart) {
 }
 
 CheckAuthorization();
+
+$(".logout-button").click(function () {
+    
+    Logout();
+});
+
+function Logout() {
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        type: 'POST',
+        url: 'http://localhost:56710/Account/Logout',
+        contentType: 'application/json; charset=utf-8',
+    }).success(function (data) {
+        }).fail(function (data) {
+    }).done(function (data) {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('role');
+        location.replace("../login.html");
+        location.reload();
+    });
+}

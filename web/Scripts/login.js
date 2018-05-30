@@ -44,7 +44,7 @@ $(function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).success(function (data) {
-            window.location.replace("./Login.html");
+            location.reload();
         }).fail(function (data) {
             alert("В процесе регистрации возникла ошибка");
         });

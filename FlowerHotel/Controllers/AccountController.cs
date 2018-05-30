@@ -39,11 +39,6 @@ namespace FlowerHotel.Controllers
             }
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<JsonResult> Login(LoginModel model)
@@ -68,19 +63,28 @@ namespace FlowerHotel.Controllers
                     {
                         UserName = model.Email
                     };
+                    var claims = claim.Claims;
+                    var it = claims.GetEnumerator();
+                    while (it.MoveNext())
+                    {
+                        if (it.Current.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                        {
+                            user.Role = it.Current.Value;
+                        }
+                    }
                     var result = new JsonResult();
-                    if (User.IsInRole("user"))
-                    {
-                        user.Role = "user";
-                    }
-                    if (User.IsInRole("employee"))
-                    {
-                        user.Role = "employee";
-                    }
-                    if (User.IsInRole("admin"))
-                    {
-                        user.Role = "admin";
-                    }
+                    //if (User.IsInRole("user"))
+                    //{
+                    //    user.Role = "user";
+                    //}
+                    //if (User.IsInRole("employee"))
+                    //{
+                    //    user.Role = "employee";
+                    //}
+                    //if (User.IsInRole("admin"))
+                    //{
+                    //    user.Role = "admin";
+                    //}
                     result.Data = user;
                     return result;
                 }
@@ -91,12 +95,11 @@ namespace FlowerHotel.Controllers
         public JsonResult Logout()
         {
             AuthenticationManager.SignOut();
-            return new JsonResult();
-        }
-
-        public ActionResult Register()
-        {
-            return View();
+            Response.StatusCode = 200;
+            return new JsonResult
+            {
+                Data = "success"
+            };
         }
 
         [HttpPost]
@@ -152,7 +155,7 @@ namespace FlowerHotel.Controllers
                 Name = "Valerii",
                 Surname = "Nikolaienko",
                 Role = "admin",
-            }, new List<string> { "user", "admin", "emloyee" });
+            }, new List<string> { "user", "admin", "employee" });
         }
     }
 }

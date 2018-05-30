@@ -13,7 +13,7 @@ $(function () {
             xhrFields: { withCredentials: true },
             data: hotelData
         }).success(function (data, status, xhr) {
-            console.log(xhr);
+            location.href = "./hotels.html";
         }).fail(function (data) {
             console.log('------------');
             console.log(data);
