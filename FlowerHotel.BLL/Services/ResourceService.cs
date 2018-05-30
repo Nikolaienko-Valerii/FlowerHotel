@@ -20,10 +20,8 @@ namespace FlowerHotel.BLL.Services
         {
             var resource = new Resource
             {
-                Name = resourceDto.Name,
-                Amount = resourceDto.Amount
+                Name = resourceDto.Name
             };
-            resource.HotelId = resource.HotelId;
             resource.Measure = resourceDto.Measure;
             Database.Resources.Create(resource);
             await Database.SaveAsync();
@@ -34,10 +32,8 @@ namespace FlowerHotel.BLL.Services
             {
                 Id = resourceDto.Id,
                 Name = resourceDto.Name,
-                Amount = resourceDto.Amount
+                Measure = resourceDto.Measure
             };
-            resource.HotelId = resource.HotelId;
-            resource.Measure = resourceDto.Measure;
             Database.Resources.Update(resource);
             await Database.SaveAsync();
         }
@@ -58,16 +54,9 @@ namespace FlowerHotel.BLL.Services
             {
                 Id = resource.Id,
                 Name = resource.Name,
-                Amount = resource.Amount,
                 Measure = resource.Measure,
-                HotelId = resource.HotelId
-            };
+                };
             return result;
-        }
-        public IEnumerable<ResourceDTO> GetHotelResources(int hotelId)
-        {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Resource, ResourceDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Resource>, List<ResourceDTO>>(Database.Resources.Find(r => r.HotelId == hotelId));
         }
 
         public void Dispose()

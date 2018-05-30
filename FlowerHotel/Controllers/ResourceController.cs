@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlowerHotel.Controllers
 {
-    [Authorize(Roles ="employee")]
+    [Authorize(Roles ="admin")]
     public class ResourceController : ApiController
     {
         private IResourceService ResourceService
@@ -18,28 +18,10 @@ namespace FlowerHotel.Controllers
             }
         }
 
-        private IEmployeeService EmployeeService
-        {
-            get
-            {
-                return new ServiceCreator().CreateEmployeeService("DefaultConnection");
-            }
-        }
-
-        private IUserService UserService
-        {
-            get
-            {
-                return new ServiceCreator().CreateUserService("DefaultConnection");
-            }
-        }
-
         // GET: api/Resource
-        public async Task<IHttpActionResult> Get()
+        public IHttpActionResult Get()
         {
-            string userId = await UserService.GetUserId(User.Identity.Name);
-            int hotelId = EmployeeService.GetEmployeeHotelId(userId);
-            return Ok(ResourceService.GetHotelResources(hotelId));
+            return Ok(ResourceService.GetAll());
         }
 
         // GET: api/Resource/5
@@ -55,14 +37,10 @@ namespace FlowerHotel.Controllers
             {
                 return BadRequest();
             }
-            string userId = await UserService.GetUserId(User.Identity.Name);
-            int hotelId = EmployeeService.GetEmployeeHotelId(userId);
-            ResourceDTO resourceDTO = new ResourceDTO
+            var resourceDTO = new ResourceDTO
             {
                 Name = resource.Name,
-                Amount = resource.Amount,
-                Measure = resource.Measure,
-                HotelId = hotelId
+                Measure = resource.Measure
             };
             await ResourceService.Create(resourceDTO);
             return Ok();
@@ -75,14 +53,10 @@ namespace FlowerHotel.Controllers
             {
                 return BadRequest();
             }
-            string userId = await UserService.GetUserId(User.Identity.Name);
-            int hotelId = EmployeeService.GetEmployeeHotelId(userId);
-            ResourceDTO resourceDTO = new ResourceDTO
+            var resourceDTO = new ResourceDTO
             {
                 Name = resource.Name,
-                Amount = resource.Amount,
-                Measure = resource.Measure,
-                HotelId = hotelId
+                Measure = resource.Measure
             };
             await ResourceService.Update(resourceDTO);
             return Ok();

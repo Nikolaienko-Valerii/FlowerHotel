@@ -16,6 +16,7 @@ namespace FlowerHotel.DAL.Interfaces
         IRepository<Employee> Employees { get; }
         IRepository<Schedule> Schedules { get; }
         IRepository<Resource> Resources { get; }
+        IRepository<HotelResource> HotelResources { get; }
         Task SaveAsync();
     }
 }

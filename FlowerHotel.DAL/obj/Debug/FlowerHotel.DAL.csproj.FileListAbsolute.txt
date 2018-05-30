@@ -36,3 +36,5 @@ D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.dll
 D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.pdb
 D:\Valera\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.userId_fix.resources
 D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.userId_fix.resources
+D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.ResourceFix.resources
+D:\Files\FlowerHotel\FlowerHotel.DAL\obj\Debug\FlowerHotel.DAL.Migrations.FixOfResourceFix.resources

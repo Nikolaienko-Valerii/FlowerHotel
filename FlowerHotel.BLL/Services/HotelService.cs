@@ -30,15 +30,20 @@ namespace FlowerHotel.BLL.Services
         }
         public async Task Update(HotelDTO hotelDto)
         {
+            var curreHotel = Database.Hotels.Get(hotelDto.Id);
+            int holdPlaces = curreHotel.AmountOfPlaces - curreHotel.PlacesAvailable;
             var hotel = new Hotel
             {
                 Id = hotelDto.Id,
                 Name = hotelDto.Name,
                 Location = hotelDto.Location
             };
-            int available = hotelDto.AmountOfPlaces - (hotel.AmountOfPlaces - hotel.PlacesAvailable);
-            hotel.AmountOfPlaces = hotelDto.AmountOfPlaces;
-            hotel.PlacesAvailable = available;
+            int available = hotelDto.AmountOfPlaces - holdPlaces;
+            if (available >= 0)
+            {
+                hotel.AmountOfPlaces = hotelDto.AmountOfPlaces;
+                hotel.PlacesAvailable = available;
+            }
             Database.Hotels.Update(hotel);
             await Database.SaveAsync();
         }

@@ -19,7 +19,7 @@ namespace FlowerHotel.DAL.Repositories
 
         public IEnumerable<Resource> GetAll()
         {
-            return _db.Resources.Include(r => r.Hotel);
+            return _db.Resources;
         }
 
         public Resource Get(int id)

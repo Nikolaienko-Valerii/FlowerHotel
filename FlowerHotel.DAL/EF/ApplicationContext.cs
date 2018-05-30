@@ -15,5 +15,6 @@ namespace FlowerHotel.DAL.EF
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Resource> Resources { get; set; }       
+        public DbSet<HotelResource> HotelResources { get; set; }
     }
 }

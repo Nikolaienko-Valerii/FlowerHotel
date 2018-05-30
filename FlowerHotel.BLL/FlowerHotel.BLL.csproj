@@ -64,6 +64,7 @@
     <Compile Include="DTO\HotelDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\PlantDTO.cs" />
+    <Compile Include="DTO\HotelResourceDTO.cs" />
     <Compile Include="DTO\ResourceDTO.cs" />
     <Compile Include="DTO\ScheduleDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Interfaces\IPlantService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
+    <Compile Include="Interfaces\IHotelResourceService.cs" />
     <Compile Include="Interfaces\IScheduleService.cs" />
     <Compile Include="Interfaces\IResourceService.cs" />
     <Compile Include="Interfaces\IHotelService.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Services\PlantService.cs" />
+    <Compile Include="Services\HotelResourceService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\ResourceService.cs" />
     <Compile Include="Services\HotelService.cs" />

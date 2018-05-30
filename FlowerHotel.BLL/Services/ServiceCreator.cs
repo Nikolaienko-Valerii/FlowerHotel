@@ -34,5 +34,9 @@ namespace FlowerHotel.BLL.Services
         {
             return new EmployeeService(new IdentityUnitOfWork(connection));
         }
+        public IHotelResourceService CreateHotelResourceService(string connection)
+        {
+            return new HotelResourceService(new IdentityUnitOfWork(connection));
+        }
     }
 }

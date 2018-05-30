@@ -22,6 +22,7 @@ namespace FlowerHotel.DAL.Repositories
         private EmployeeRepository _employeeRepository;
         private ScheduleRepository _scheduleRepository;
         private ResourceRepository _resourceRepository;
+        private HotelResourceRepository _hotelResourceRepository;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -100,6 +101,16 @@ namespace FlowerHotel.DAL.Repositories
                 if (_resourceRepository == null)
                     _resourceRepository = new ResourceRepository(_db);
                 return _resourceRepository;
+            }
+        }
+
+        public IRepository<HotelResource> HotelResources
+        {
+            get
+            {
+                if (_hotelResourceRepository == null)
+                    _hotelResourceRepository = new HotelResourceRepository(_db);
+                return _hotelResourceRepository;
             }
         }
 

@@ -72,20 +72,10 @@ namespace FlowerHotel.Controllers
                             user.Role = it.Current.Value;
                         }
                     }
-                    var result = new JsonResult();
-                    //if (User.IsInRole("user"))
-                    //{
-                    //    user.Role = "user";
-                    //}
-                    //if (User.IsInRole("employee"))
-                    //{
-                    //    user.Role = "employee";
-                    //}
-                    //if (User.IsInRole("admin"))
-                    //{
-                    //    user.Role = "admin";
-                    //}
-                    result.Data = user;
+                    var result = new JsonResult
+                    {
+                        Data = user
+                    };
                     return result;
                 }
             }

@@ -11,6 +11,6 @@ namespace FlowerHotel.DAL.Entities
         public int PlacesAvailable { get; set; }
         public ICollection<Order> Orders { get; set; }
         public ICollection<Employee> Employees { get; set; }
-        public ICollection<Resource> Resources { get; set; }
+        public ICollection<HotelResource> HotelResources { get; set; }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Hotel.cs" />
+    <Compile Include="Entities\HotelResource.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Plant.cs" />
     <Compile Include="Entities\Resource.cs" />
@@ -80,6 +81,14 @@
     <Compile Include="Migrations\201805241427553_userId_fix.Designer.cs">
       <DependentUpon>201805241427553_userId_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805301456360_ResourceFix.cs" />
+    <Compile Include="Migrations\201805301456360_ResourceFix.Designer.cs">
+      <DependentUpon>201805301456360_ResourceFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805301504371_FixOfResourceFix.cs" />
+    <Compile Include="Migrations\201805301504371_FixOfResourceFix.Designer.cs">
+      <DependentUpon>201805301504371_FixOfResourceFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientManager.cs" />
@@ -88,6 +97,7 @@
     <Compile Include="Repositories\IdentityUnitOfWork.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PlantRepository.cs" />
+    <Compile Include="Repositories\HotelResourceRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
   </ItemGroup>
@@ -104,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805241427553_userId_fix.resx">
       <DependentUpon>201805241427553_userId_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805301456360_ResourceFix.resx">
+      <DependentUpon>201805301456360_ResourceFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805301504371_FixOfResourceFix.resx">
+      <DependentUpon>201805301504371_FixOfResourceFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
