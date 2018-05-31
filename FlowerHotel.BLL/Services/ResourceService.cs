@@ -30,6 +30,7 @@ namespace FlowerHotel.BLL.Services
             {
                 Database.HotelResources.Create(new HotelResource{HotelId = hotel.Id, ResourceId = resource.Id, Amount = 0});
             }
+            await Database.SaveAsync();
         }
         public async Task Update(ResourceDTO resourceDto)
         {

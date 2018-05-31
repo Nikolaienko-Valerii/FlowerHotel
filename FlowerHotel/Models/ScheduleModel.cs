@@ -16,7 +16,6 @@ namespace FlowerHotel.Models
         public DateTime LastTimeDone { get; set; }
         [Required]
         public double Amount { get; set; }
-        [Required]
         public string Measure { get; set; }
         public bool IsTracked { get; set; }
     }

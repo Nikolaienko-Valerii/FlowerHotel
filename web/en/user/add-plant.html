@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Login-Flower Hotel</title>
-  <link href="../../Styles/plants.css" rel="stylesheet"/>
+  <link href="../../Styles/forms.css" rel="stylesheet"/>
   <link href="../../Styles/navbar.css" rel="stylesheet"/>
   <link href="../../Styles/font-awesome.min.css" rel="stylesheet"/>
   <script src="../../Scripts/modernizr-2.6.2.js"></script>
@@ -14,18 +14,30 @@
   <div class="container">
     <ul class="nav">
       <li><a href="#"><i class="icon-home icon-large"></i></a></li>  
-      <li><a href="#">My Plants</a></li>
-      <li><a href="#">My Orders</a></li>
+      <li>
+        <a href="./plants.html">My Plants</a>
+      </li>
+      <li>
+        <a href="./orders.html">My Orders</a>
+      </li>
       <li class="username-block">
         <div class="username">username@gmail.com</div>
         <button class="logout-button">Log Out</button>
       </li>              
     </ul> 
   </div>
+  <div class="form-container">
+    <div class="form">
+      <form class="plant-form">
+        <input type="text" placeholder="Name" id="plantName" />
+        <button id="add-button">Add</button>
+      </form>
+    </div>
+  </div>
   <script src="../../Scripts/jquery-1.10.2.js"></script>
   <script src="../../Scripts/bootstrap.js"></script>
   <script src="../../Scripts/respond.js"></script>
-  <script src="../../Scripts/login.js"></script>
+  <script src="../../Scripts/addPlant.js"></script>
   <script src="../../Scripts/checkAuthorization.js"></script>
 </body>
 </html>

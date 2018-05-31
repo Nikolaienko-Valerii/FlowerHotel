@@ -38,7 +38,6 @@ namespace FlowerHotel.Controllers
                 Interval = schedule.Interval,
                 LastTimeDone = schedule.LastTimeDone,
                 Amount = schedule.Amount,
-                Measure = schedule.Measure,
                 IsTracked = false
             };
             await ScheduleService.Create(scheduleDto);
@@ -60,7 +59,6 @@ namespace FlowerHotel.Controllers
                 Interval = schedule.Interval,
                 LastTimeDone = schedule.LastTimeDone,
                 Amount = schedule.Amount,
-                Measure = schedule.Measure,
                 IsTracked = false
             };
             ScheduleService.Update(scheduleDto);

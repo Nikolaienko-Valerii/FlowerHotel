@@ -29,7 +29,7 @@ namespace FlowerHotel.Controllers
         public async Task<IHttpActionResult> Get()
         {
             var userId = await UserService.GetUserId(User.Identity.Name);
-            return Ok(OrderService.GetAll());
+            return Ok(OrderService.GetUserOrders(userId));
         }
 
         // GET: api/Order/5
@@ -70,7 +70,7 @@ namespace FlowerHotel.Controllers
             var orderDTO = new OrderDTO
             {
                 Id = order.Id,
-                ApplicationUserId = order.ApplicationUserId,
+                ApplicationUserId = userId,
                 HotelId = order.HotelId,
                 PlantId = order.PlantId,
                 StartTime = order.StartTime,

@@ -71,7 +71,11 @@ namespace FlowerHotel.BLL.Services
             return result;
         }
 
-        //TODO Add Get and GetAll methods for one user and hotel
+        public IEnumerable<OrderDTO> GetUserOrders(string userId)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Order>, List<OrderDTO>>(Database.Orders.Find(o => o.ApplicationUserId == userId));
+        }
         public void Dispose()
         {
             Database.Dispose();

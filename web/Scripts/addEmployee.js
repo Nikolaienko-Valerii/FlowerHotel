@@ -53,7 +53,7 @@ $(function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).success(function (data) {
-            location.reload();
+            location.href = "./employees.html";
         }).fail(function (data) {
             alert("В процесе регистрации возникла ошибка");
         });

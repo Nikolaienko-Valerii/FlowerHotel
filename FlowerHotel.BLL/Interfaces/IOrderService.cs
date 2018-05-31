@@ -12,5 +12,6 @@ namespace FlowerHotel.BLL.Interfaces
         Task Delete(int orderId);
         IEnumerable<OrderDTO> GetAll();
         OrderDTO Get(int orderId);
+        IEnumerable<OrderDTO> GetUserOrders(string userId);
     }
 }
